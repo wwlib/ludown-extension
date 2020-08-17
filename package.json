@@ -1,0 +1,91 @@
+{
+  "name": "ludown-extension",
+  "displayName": "ludown",
+  "description": "LUIS markdown-like format for nlu model authoring",
+  "publisher": "wwlib",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.39.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets",
+    "Other"
+  ],
+  "contributes": {
+    "languages": [
+      {
+        "id": "ludown",
+        "aliases": [
+          "ludown",
+          "ludown"
+        ],
+        "firstLine": "^>!.*\\b(ludown).*",
+        "extensions": [
+          ".lu"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "ludown",
+        "scopeName": "source.ludown",
+        "path": "./syntaxes/ludown.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "ludown",
+        "path": "./snippets/snippets-ludown.json"
+      }
+    ],
+    "commands": [
+      {
+        "command": "extension.expandSample",
+        "title": "ludown: Expand Sample"
+      },
+      {
+        "command": "extension.reloadModel",
+        "title": "ludown: Reload Model"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "extension.expandSample",
+        "key": "ctrl+alt+cmd+x",
+        "mac": "ctrl+alt+cmd+x",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "extension.reloadModel",
+        "key": "ctrl+alt+cmd+r",
+        "mac": "ctrl+alt+cmd+r",
+        "when": "editorTextFocus"
+      }
+    ]
+  },
+  "activationEvents": [
+    "onLanguage:ludown"
+  ],
+  "main": "./out/extension.js",
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "lint": "tslint -p ./",
+    "watch": "tsc -watch -p ./"
+  },
+  "devDependencies": {
+    "@types/node": "^10.12.18",
+    "tslint": "^5.16.0",
+    "typescript": "^3.5.1",
+    "@types/vscode": "^1.32.0"
+  },
+  "dependencies": {
+    "zlib": "^1.0.5"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:wwlib/ludown-extension.git"
+  }
+}

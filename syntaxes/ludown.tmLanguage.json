@@ -1,0 +1,60 @@
+{
+  "firstLineMatch": "^>!/.*\\bludown\\b",
+	"patterns": [
+    {
+      "begin": ">",
+      "end": "\\n",
+      "beginCaptures": {
+        "0": {
+          "name": "comment.line.greater.ludown"
+        }
+      },
+      "name": "comment.line.ludown"
+    },
+		{
+			"include": "#annotation.ludown"
+		}
+	],
+  "repository": {
+    "annotation.ludown": {
+      "name": "annotation.ludown",
+      "patterns": [
+        {
+          "begin": "({)([@_a-zA-Z0-9]+)(=)",
+          "beginCaptures": {
+            "1": {
+              "name": "keyword.other.annotation.brace.open.ludown"
+            },
+            "2": {
+              "name": "support.type.annotation.entity.ludown"
+            },
+            "3": {
+              "name": "keyword.operator.annotation.equal.ludown"
+            }
+          },
+          "patterns": [
+            {
+              "begin": "\\G([ -.,!?&_'’:@/a-zA-Z0-9]+)",
+              "beginCaptures": {
+                "1": {
+                  "name": "string.unquoted.annotation.literal.ludown"
+                }
+              },
+              "end": "\\G"
+            },
+            {
+              "include": "#annotation.ludown"
+            }
+          ],
+          "end": "}",
+          "endCaptures": {
+            "0": {
+              "name": "keyword.other.annotation.brace.close.ludown"
+            }
+          }
+        }
+      ]
+    }
+  },
+  "scopeName": "source.ludown"
+}
